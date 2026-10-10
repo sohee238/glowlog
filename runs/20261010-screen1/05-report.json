@@ -1,0 +1,109 @@
+{
+  "G1": {
+    "pass": true,
+    "count": 0,
+    "by_rule": {},
+    "checked_at": "2026-10-10T16:20:10",
+    "inputs": {
+      "runs/20261010-screen1/01-refs.md": "1921c18dd6bd"
+    },
+    "violations": []
+  },
+  "history": [
+    {
+      "gate": "G1",
+      "pass": true,
+      "count": 0,
+      "checked_at": "2026-10-10T16:20:10"
+    },
+    {
+      "gate": "G2",
+      "pass": true,
+      "count": 0,
+      "checked_at": "2026-10-10T16:22:17"
+    },
+    {
+      "gate": "G3",
+      "pass": true,
+      "count": 0,
+      "checked_at": "2026-10-10T16:26:16"
+    },
+    {
+      "gate": "CHOICE",
+      "pass": true,
+      "count": 0,
+      "checked_at": "2026-10-10T16:46:45"
+    },
+    {
+      "gate": "G4",
+      "pass": true,
+      "count": 0,
+      "checked_at": "2026-10-10T16:48:59"
+    },
+    {
+      "gate": "S5",
+      "pass": true,
+      "count": 0,
+      "checked_at": "2026-10-10T16:49:14"
+    }
+  ],
+  "G2": {
+    "pass": true,
+    "count": 0,
+    "by_rule": {},
+    "checked_at": "2026-10-10T16:22:17",
+    "inputs": {
+      "runs/20261010-screen1/02-spec.md": "21db91c6a909",
+      "PRD.md": "8e852bf11b98"
+    },
+    "violations": []
+  },
+  "G3": {
+    "pass": true,
+    "count": 0,
+    "by_rule": {},
+    "checked_at": "2026-10-10T16:26:16",
+    "inputs": {
+      "runs/20261010-screen1/03-draft-a.html": "373b8072b99c",
+      "runs/20261010-screen1/03-draft-b.html": "56230ef49e0a"
+    },
+    "violations": []
+  },
+  "CHOICE": {
+    "pass": true,
+    "count": 0,
+    "by_rule": {},
+    "checked_at": "2026-10-10T16:46:45",
+    "inputs": {
+      "runs/20261010-screen1/03-choice.md": "aea362a59291",
+      "runs/20261010-screen1/03-draft-a.html": "373b8072b99c",
+      "runs/20261010-screen1/03-draft-b.html": "56230ef49e0a"
+    },
+    "violations": []
+  },
+  "G4": {
+    "pass": true,
+    "count": 0,
+    "by_rule": {},
+    "checked_at": "2026-10-10T16:48:59",
+    "inputs": {
+      "runs/20261010-screen1/04-components-before.css": "208b6114aa8b",
+      "components/glowlog.css": "d0f6cfa3da74"
+    },
+    "violations": []
+  },
+  "S5": {
+    "pass": true,
+    "count": 0,
+    "by_rule": {},
+    "checked_at": "2026-10-10T16:49:14",
+    "inputs": {
+      "screens/screen-1.html": "e78f430efa25",
+      "components/glowlog.css": "d0f6cfa3da74",
+      "runs/20261010-screen1/03-choice.md": "aea362a59291",
+      "runs/20261010-screen1/03-draft-a.html": "373b8072b99c",
+      "runs/20261010-screen1/03-draft-b.html": "56230ef49e0a"
+    },
+    "violations": []
+  }
+}

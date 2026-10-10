@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390">
+<title>Glowlog 오늘 한 관리 작성</title>
+<link rel="stylesheet" href="../components/glowlog.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    width: 390px;
+    height: 844px;
+    margin: 0;
+    padding: 0 20px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wr-main {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* 헤드라인 + 날짜 */
+  .wr-headline { display: flex; flex-direction: column; gap: 4px; }
+  .wr-headline-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .wr-date-group { display: flex; align-items: center; gap: 4px; }
+  .wr-date-input { width: 140px; }
+
+  /* 하단 저장 영역 */
+  .wr-foot { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 0 0; }
+</style>
+</head>
+<body class="gl-app" data-token="effect/app-background text/primary fontSize/body">
+
+  <header class="gl-topbar">
+    <div class="gl-topbar-side">
+      <a class="gl-link gl-text-h2 gl-color-primary" aria-label="뒤로가기" data-token="fontSize/heading2 fontWeight/bold text/primary">←</a>
+    </div>
+    <h1 class="gl-text-h2 gl-color-primary" data-token="fontSize/heading2 fontWeight/bold text/primary">오늘 한 관리</h1>
+    <div class="gl-topbar-side"></div>
+  </header>
+
+  <main class="wr-main">
+
+    <!-- 1. 헤드라인 + 날짜 -->
+    <section class="wr-headline">
+      <h2 class="gl-text-h1 gl-color-primary gl-nowrap" data-token="fontSize/heading1 fontWeight/bold text/primary">오늘 어떤 관리를 했나요?</h2>
+      <div class="wr-headline-row">
+        <p class="gl-text-caption gl-color-secondary gl-nowrap" data-token="fontSize/caption text/secondary">날짜는 탭해서 바꿀 수 있어요</p>
+        <div class="wr-date-group">
+          <input class="gl-input gl-input-compact wr-date-input" type="text" value="2026.10.10 (토)" aria-label="관리 날짜" data-token="component/input bg/input border/default radius/md fontSize/body text/primary">
+          <span class="gl-cal-icon" aria-hidden="true" data-token="iris/500 radius/sm"><span class="gl-cal-icon-bar" data-token="iris/500"></span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 카테고리 -->
+    <section class="gl-card gl-section" data-token="component/card bg/card border/glass radius/lg effect/frosted-glass-card effect/inner-glow">
+      <h3 class="gl-text-label gl-color-secondary" data-token="fontSize/label fontWeight/semibold text/secondary">카테고리</h3>
+      <div class="gl-chip-group" role="radiogroup" aria-label="관리 카테고리">
+        <span class="gl-badge gl-badge-on gl-chip" role="radio" aria-checked="true" data-token="component/badge effect/iridescent-gradient radius/sm fontSize/label fontWeight/semibold"><span class="gl-chip-icon gl-chip-icon-round gl-chip-icon-on" data-token="bg/card"></span>화장품</span>
+        <span class="gl-badge gl-badge-off gl-chip" role="radio" aria-checked="false" data-token="component/badge bg/card-subtle text/secondary radius/sm fontSize/label fontWeight/semibold"><span class="gl-chip-icon gl-chip-icon-iris" data-token="iris/200"></span>뷰티 디바이스</span>
+        <span class="gl-badge gl-badge-off gl-chip" role="radio" aria-checked="false" data-token="component/badge bg/card-subtle text/secondary radius/sm fontSize/label fontWeight/semibold"><span class="gl-chip-icon gl-chip-icon-round gl-chip-icon-rose" data-token="rose/200"></span>피부과 시술</span>
+        <span class="gl-badge gl-badge-off gl-chip" role="radio" aria-checked="false" data-token="component/badge bg/card-subtle text/secondary radius/sm fontSize/label fontWeight/semibold"><span class="gl-chip-icon gl-chip-icon-mist" data-token="mist/200"></span>마사지·기타</span>
+      </div>
+    </section>
+
+    <!-- 3. 세부 항목 (제품·시술) -->
+    <section class="gl-card gl-section" data-token="component/card bg/card border/glass radius/lg effect/frosted-glass-card effect/inner-glow">
+      <div class="gl-field-stack">
+        <div class="gl-field-grid">
+          <label class="gl-field">
+            <span class="gl-text-label gl-color-secondary" data-token="fontSize/label fontWeight/semibold text/secondary">브랜드명</span>
+            <input class="gl-input gl-input-compact gl-input-block" type="text" value="닥터지" data-token="component/input bg/input border/default radius/md fontSize/body text/primary">
+          </label>
+          <label class="gl-field">
+            <span class="gl-text-label gl-color-secondary" data-token="fontSize/label fontWeight/semibold text/secondary">제품·시술명</span>
+            <input class="gl-input gl-input-compact gl-input-block" type="text" value="비타민C 세럼" data-token="component/input bg/input border/default radius/md fontSize/body text/primary">
+          </label>
+        </div>
+        <label class="gl-field">
+          <span class="gl-field-label">
+            <span class="gl-text-label gl-color-secondary" data-token="fontSize/label fontWeight/semibold text/secondary">사용 부위</span>
+            <span class="gl-text-caption gl-color-muted" data-token="fontSize/caption text/muted">선택</span>
+          </span>
+          <input class="gl-input gl-input-compact gl-input-block" type="text" placeholder="예: 양 볼, 광대 색소 부위" data-token="component/input bg/input border/default radius/md fontSize/body text/primary">
+        </label>
+      </div>
+    </section>
+
+    <!-- 4. 사진 -->
+    <section class="gl-card gl-section" data-token="component/card bg/card border/glass radius/lg effect/frosted-glass-card effect/inner-glow">
+      <h3 class="gl-text-label gl-color-secondary" data-token="fontSize/label fontWeight/semibold text/secondary">사진</h3>
+      <div class="gl-photo-tiles">
+        <div class="gl-photo-tile gl-photo-tile-add" role="group" aria-label="사진 추가" data-token="bg/card-subtle border/default radius/md">
+          <span class="gl-text-h2 gl-color-accent" data-token="fontSize/heading2 fontWeight/bold text/accent">+</span>
+          <span class="gl-text-caption gl-color-secondary gl-nowrap" data-token="fontSize/caption text/secondary">촬영·앨범</span>
+          <span class="gl-text-caption gl-color-muted" data-token="fontSize/caption text/muted">2/10</span>
+        </div>
+        <div class="gl-photo-tile gl-photo-thumb gl-photo-thumb-rose" aria-label="첨부 사진 1" data-token="rose/50 radius/md">
+          <span class="gl-photo-del gl-text-label gl-color-white" aria-label="사진 삭제" data-token="neutral/600 fontSize/label">×</span>
+        </div>
+        <div class="gl-photo-tile gl-photo-thumb gl-photo-thumb-mist" aria-label="첨부 사진 2" data-token="mist/50 radius/md">
+          <span class="gl-photo-del gl-text-label gl-color-white" aria-label="사진 삭제" data-token="neutral/600 fontSize/label">×</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 메모 -->
+    <section class="gl-card gl-section" data-token="component/card bg/card border/glass radius/lg effect/frosted-glass-card effect/inner-glow">
+      <label class="gl-field">
+        <span class="gl-field-label">
+          <span class="gl-text-label gl-color-secondary" data-token="fontSize/label fontWeight/semibold text/secondary">메모</span>
+          <span class="gl-text-caption gl-color-muted" data-token="fontSize/caption text/muted">선택</span>
+        </span>
+        <textarea class="gl-input gl-input-compact gl-input-block gl-textarea" placeholder="피부 반응, 느낌, 주의사항을 적어두세요" data-token="component/input bg/input border/default radius/md fontSize/body text/primary"></textarea>
+      </label>
+    </section>
+
+  </main>
+
+  <footer class="wr-foot">
+    <p class="gl-text-caption gl-color-secondary" data-token="fontSize/caption text/secondary">저장하면 날짜·루틴 목록에 오늘 날짜로 반영돼요</p>
+    <button class="gl-button gl-button-block" type="button" data-token="component/button effect/iridescent-gradient radius/lg fontSize/body fontWeight/semibold">저장하기</button>
+  </footer>
+
+</body>
+</html>

@@ -11,7 +11,7 @@
 |---|---|---|
 | G1 | `01-refs.md` | ① 레퍼런스 ≥ 3개 ② 레퍼런스마다 uibowl `ui_url` 1개 + "반영 포인트" ≥ 1줄 ③ ★ 금지 키워드 0건 |
 | G2 | `02-spec.md` | ① PRD 해당 화면 기능 요구사항 bullet 수 = spec 체크리스트 항목 수 (화면 1·2·3 = 6·5·5) ② ★ 금지 키워드 0건 |
-| G3 | `03-draft-a.html`, `03-draft-b.html` | ① 파일 2개 존재 ② 각 390×844 ③ HTML 허용값 위반 0건 (`data-token` 검사 면제) ④ ★ 금지 키워드 0건 ⑤ `position: absolute`/`fixed` 0건 ⑥ 렌더 판정 위반 0건 (`render-*`) |
+| G3 | `03-draft-a.html`, `03-draft-b.html` | ① 파일 2개 존재 ② 각 390×844 ③ HTML 허용값 위반 0건 (`data-token` 검사 면제) ④ ★ 금지 키워드 0건 ⑤ `position: absolute`/`fixed` 0건 ⑥ 렌더 판정 위반 0건 (`render-*`) ⑦ 외부 참조 0건 — `<link rel=stylesheet>`, `@import`, `<script|img|source|iframe src>`, `url(…)` 중 `data:`가 아닌 것 (`self-contained`, Figma 가져오기용 단독 파일) |
 | 사람 승인 (CHOICE) | `03-choice.md` | ① 첫 줄이 `a` 또는 `b` ② `drafts:` 줄의 시안 해시 = 현재 `03-draft-a/b.html` 해시 |
 | G4 | `04-components-before.css`, `components/glowlog.css` | ① 스냅샷 존재 ② 이전 클래스 삭제 0건 ③ 이전 클래스 정의 변경 0건 |
 | S5 | `screens/screen-{N}.html` | ① 390×844 ② HTML 허용값 위반 0건 ③ `data-token` 누락 0건 ④ ★ 금지 키워드 0건 ⑤ 편집 범위 밖 수정 파일 0건 (`harness/roles.md`) ⑥ `position: absolute`/`fixed` 0건 ⑦ `data-token` 값이 `design.md` 토큰명에 존재 ⑧ CHOICE 조건 재확인 (승인 후 시안 변경 0건) ⑨ G1~G4·CHOICE의 마지막 판정이 PASS이고 그 입력 파일 지문이 지금과 같음 (`gate-not-passed`·`report-stale` 0건) ⑩ 판정 이력 순서 위반 0건 (`order`) ⑪ `state.json` retries = 이력의 FAIL 수 (`retries`, `--adhoc` 판정 제외) ⑫ 렌더 판정 위반 0건 (`render-*`) ⑬ `data-token` 값이 실제 계산값에 쓰임 (`token-value`) |

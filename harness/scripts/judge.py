@@ -426,6 +426,33 @@ def check_html(path, R, require_tokens):
     return out
 
 
+SRC_ATTRS = {'script': 'src', 'img': 'src', 'source': 'src', 'iframe': 'src', 'video': 'src', 'audio': 'src', 'embed': 'src', 'object': 'data'}
+
+
+def check_self_contained(path):
+    """G3 시안은 파일 1개로 Figma(html.to.design)에 가져올 수 있어야 한다 — 외부 CSS·스크립트·이미지·url() 참조 금지 (data: 만 허용)."""
+    out = []
+    doc = Doc()
+    doc.feed(open(path, encoding='utf-8').read())
+    for el in doc.elements:
+        a, where = el['attrs'], f'{rel(path)}:{el["line"]} <{el["tag"]}>'
+        if el['tag'] == 'link' and 'stylesheet' in a.get('rel', '').lower():
+            add(out, 'self-contained', where, f'외부 CSS href="{a.get("href", "")}"')
+        attr = SRC_ATTRS.get(el['tag'])
+        if attr and a.get(attr) and not a[attr].startswith('data:'):
+            add(out, 'self-contained', where, f'외부 참조 {attr}="{a[attr]}"')
+        for u in re.findall(r'url\(\s*[\'"]?([^\'")]+)', a.get('style', '')):
+            if not u.startswith('data:'):
+                add(out, 'self-contained', where, f'외부 참조 url({u})')
+    css = ''.join(doc.css)
+    for m in re.finditer(r'@import[^;]*;', css):
+        add(out, 'self-contained', f'{rel(path)} <style>', f'외부 CSS {m.group(0)}')
+    for u in re.findall(r'url\(\s*[\'"]?([^\'")]+)', css):
+        if not u.startswith('data:'):
+            add(out, 'self-contained', f'{rel(path)} <style>', f'외부 참조 url({u})')
+    return out
+
+
 # ---------------------------------------------------------------- 렌더 판정 (헤드리스 Chrome 계산값)
 
 PROBE = """<script>
@@ -816,6 +843,8 @@ def run_gate(gate, run_dir, root, R=None):
             if os.path.exists(f(name)):
                 out += check_html(f(name), R, require_tokens=False)
                 out += check_render(f(name), R, require_tokens=False)
+                if H['G3'].get('self_contained'):
+                    out += check_self_contained(f(name))
             else:
                 add(out, 'missing', name, '파일 없음')
     elif gate == 'CHOICE':

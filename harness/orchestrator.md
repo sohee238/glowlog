@@ -16,7 +16,7 @@
 4. 해당 단계 에이전트를 호출한다 (S1·S2 → `researcher`, S3·S4 → `designer`)
 5. 단계 종료: `judge`를 호출해 해당 게이트를 판정한다 (`python3 harness/scripts/judge.py {게이트} --run runs/{id}`)
 6. 통과하면 `state.json`의 `stage`를 다음 단계로 갱신한다. 실패하면 `harness/rules.json` `retries`에 따라 되돌아가고 해당 `retries` 키를 +1 한다 (G1·G2·G3 FAIL → 같은 이름 키, G4·S5 FAIL → `G4_S5`, 본인 반려 → `reject`). S5는 이 값을 `05-report.json` `history`의 FAIL 수와 대조한다
-7. S3를 통과하면 멈추고, 시안 2개와 함께 `design.md`의 👀 규칙 목록을 체크리스트로 보여준 뒤 본인의 시안 선택을 기다린다. 본인이 "a로 할게"/"b로 할게"라고 말했을 때만 `python3 harness/scripts/choose.py {a|b} --run runs/{id} --reason "{본인이 말한 이유}"`를 실행하고, CHOICE 게이트를 판정한다
+7. S3를 통과하면 멈추고, 시안 2개와 함께 `design.md`의 👀 규칙 목록을 체크리스트로, `harness/rules.json` `figma` 값으로 Figma 가져오기 안내(시안 파일 경로 2개, 플러그인, 뷰포트)를 보여준 뒤 본인의 시안 선택을 기다린다. 본인이 "a로 할게"/"b로 할게"라고 말했을 때만 `python3 harness/scripts/choose.py {a|b} --run runs/{id} --reason "{본인이 말한 이유}"`를 실행하고, CHOICE 게이트를 판정한다
 8. S4를 시작할 때 Bash로 `cp components/glowlog.css runs/{id}/04-components-before.css` (첫 실행이라 `glowlog.css`가 없으면 `touch runs/{id}/04-components-before.css`)
 9. S5를 통과하면 `state.json`의 `stage`를 `DONE`으로 바꾸고 완료를 보고한다 (`DONE`이 아닌 실행이 있는 동안 guard가 고정 문서 수정을 막는다)
 

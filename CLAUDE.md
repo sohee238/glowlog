@@ -68,7 +68,7 @@
 ### 하네스 사용 전 필수
 
 - 규칙(`design.md`, `harness/rules.json`, `harness/scripts/`)을 고친 뒤와 하네스 사용 전에 회귀 검사 4단계가 모두 통과해야 한다 — `python3 harness/tests/run_all.py` (`harness/review.md` 1절)
-  ① 판정 함수 샘플 68건 + 🚦 커버리지 ② 게이트 예시 12개(실제 명령) ③ 재판정 자기 검증 ④ `runs/*` 실행 기록 재판정 (예전 PASS가 지금 FAIL이면 깨짐)
+  ① 판정 함수 샘플 71건 + 🚦 커버리지 ② 게이트 예시 12개(실제 명령) ③ 재판정 자기 검증 ④ `runs/*` 실행 기록 재판정 (예전 PASS가 지금 FAIL이면 깨짐)
 - 렌더 판정에 Google Chrome 필요
 
 ### 문서 지도
@@ -84,8 +84,8 @@
 | `harness/roles.md` | 에이전트별 편집 범위, 판정자, 트리거 |
 | `harness/orchestrator.md` | 진행 순서, 규칙, state.json, 멈춤 보고 |
 | `harness/review.md` | 판정 스크립트 검증, 시범 실행 리뷰 |
-| `harness/rules.json` | 운영 수치·금지 키워드·편집 범위 (규칙 원본 ①) |
+| `harness/rules.json` | 운영 수치·금지 키워드·편집 범위·Figma 가져오기 안내값 (규칙 원본 ①) |
 | `design.md` `## 판정 규칙 (기계용)` | 디자인 허용값 (규칙 원본 ②) |
 | `harness/templates/` | 산출물 양식 (`03-choice.md`는 복사 금지) |
 | `harness/scripts/` | `judge.py` 판정, `snapshot.py` 단계 스냅샷, `choose.py` 사람 승인 기록, `new_run.py` 실행 폴더 생성, `guard.py` 사전 차단 훅 |
-| `harness/tests/` | `run_all.py` 회귀 검사 (`run_fixtures.py` 68건, `run_gates.py` 게이트 예시 12개, `rejudge.py` 실행 기록 재판정), `build_fixtures.py`·`build_gate_cases.py` 샘플 생성 |
+| `harness/tests/` | `run_all.py` 회귀 검사 (`run_fixtures.py` 71건, `run_gates.py` 게이트 예시 12개, `rejudge.py` 실행 기록 재판정), `build_fixtures.py`·`build_gate_cases.py` 샘플 생성 |

@@ -39,14 +39,18 @@ VARIANTS = {
     'fail-component-rule':  ('padding: 16px 20px;', 'padding: 20px 20px;', [], None, 'component-rule'),
     'fail-component-missing': ('data-token="component/card bg/card', 'data-token="bg/card', [], None, 'component-missing'),
     'fail-app-background':  ('background: linear-gradient(160deg, #EEEAF5 0%, #E8E7ED 50%, #E5EEF0 100%);', 'background: #E8E7ED;', [], None, 'app-background'),
+    # G3 전용(self-contained): 없는 CSS 파일을 링크 — 정적 판정은 통과(0), 단독 파일 판정만 위반
+    'fail-self-contained':  ('<style>', '<link rel="stylesheet" href="missing.css">\n<style>', [], None, None),
 }
+# G3 단독 파일 판정(check_self_contained) 기대값: 이름 → 위반 수
+SELF_CONTAINED = {'pass.html': 0, 'fail-self-contained.html': 1}
 
 
 def main():
     src = open(os.path.join(FIX, 'pass.html'), encoding='utf-8').read()
     exp_path = os.path.join(FIX, 'expected.json')
     expected = json.load(open(exp_path, encoding='utf-8'))
-    expected = {k: v for k, v in expected.items() if not (k.endswith('.html') or k.startswith('render:'))}
+    expected = {k: v for k, v in expected.items() if not (k.endswith('.html') or k.startswith(('render:', 'sc:')))}
     expected['pass.html'] = {'check': 'html', 'count': 0}
     expected['render:pass.html'] = {'check': 'render', 'count': 0}
     for name, (a, b, extra, static_rule, render_rule) in VARIANTS.items():
@@ -61,6 +65,8 @@ def main():
             expected[f'render:{name}.html'] = {'check': 'render', 'count': 1, 'rule': render_rule}
     # 같은 파일에 본인이 예외 구절을 추가했다고 가정하면 통과해야 한다
     expected['exc:fail-keyword-phrase.html'] = {'check': 'html', 'count': 0, 'exceptions': ['로그인 없이']}
+    for name, count in SELF_CONTAINED.items():
+        expected[f'sc:{name}'] = {'check': 'self-contained', 'count': count, **({'rule': 'self-contained'} if count else {})}
     with open(exp_path, 'w', encoding='utf-8') as fp:
         json.dump(expected, fp, ensure_ascii=False, indent=2)
     print(f'샘플 {len(VARIANTS)}개 생성, expected.json 항목 {len([k for k in expected if not k.startswith("_")])}개')

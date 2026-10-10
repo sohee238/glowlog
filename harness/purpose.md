@@ -29,7 +29,7 @@
 
 ## 범위 밖
 
-- **Figma 이관:** 하네스는 HTML 승인에서 끝난다. Figma로 옮기는 작업은 하네스 밖에서 본인이 수동으로 한다.
+- **Figma 이관:** 하네스는 S3 시안을 Figma로 가져올 수 있는 단독 HTML로 준비하는 데까지 한다 (G3 `self-contained`, 안내값은 `harness/rules.json` `figma`). Figma로 가져오는 작업(html.to.design)은 하네스 밖에서 본인이 수동으로 하며 판정하지 않는다.
 
 ## 완료 기준 (한 문장)
 

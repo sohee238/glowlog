@@ -24,6 +24,8 @@ def run(name, spec, R):
         return judge.check_render(path, R, require_tokens=True)
     if spec['check'] == 'html':
         return judge.check_html(path, R, require_tokens=True)
+    if spec['check'] == 'self-contained':
+        return judge.check_self_contained(path)
     if spec['check'] == 'component':
         return judge.check_components(os.path.join(path, '04-components-before.css'), os.path.join(path, 'glowlog.css'))
     if spec['check'] == 'guard':         # 훅에 들어오는 stdin 그대로 guard.py 를 실행

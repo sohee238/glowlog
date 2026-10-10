@@ -9,7 +9,7 @@
 
 | 단계 | 스크립트 | 확인하는 것 |
 |---|---|---|
-| 1 | `run_fixtures.py` | 판정 함수 샘플 68건 + 🚦 커버리지 + guard 26건 (아래 표) |
+| 1 | `run_fixtures.py` | 판정 함수 샘플 71건 + 🚦 커버리지 + guard 26건 (아래 표) |
 | 2 | `run_gates.py` | 게이트 예시 12개(`harness/tests/gates/{게이트}/{pass,fail}`)를 임시 폴더에서 **실제 명령**으로 판정 — 결과 코드·위반 규칙·리포트 기록 |
 | 3 | `run_all.py` 내장 | 재판정 자기 검증: 옛 규칙 시절 이력 `pass-history`를 지금 규칙으로 재판정하면 알려진 깨짐(G3·S5)을 정확히 찾는가 |
 | 4 | `rejudge.py` | 실제 `runs/*`를 지금 규칙으로 재판정(`--dry`, 기록 없음). 예전 PASS → 지금 FAIL이면 깨짐. 입력 파일이 바뀐 게이트는 생략, S5 `scope`는 시간 의존이라 제외 |
@@ -19,7 +19,7 @@
 
 
 - 위치: `harness/tests/fixtures/`
-- 검사 68건 = 정적 판정 17 + 렌더 판정 10 + 렌더 샘플의 정적 통과 확인 9 + 디렉터리 샘플 6 + guard 26
+- 검사 71건 = 정적 판정 17 + 렌더 판정 10 + 렌더 샘플의 정적 통과 확인 9 + 디렉터리 샘플 6 + guard 26 + 단독 파일 판정 2 (`sc:`) + 그 샘플의 정적 통과 확인 1
 - 샘플 목록과 기대값의 원본은 `harness/tests/fixtures/expected.json` (아래 표는 종류별 요약)
 - HTML 샘플은 `pass.html`에서 `harness/tests/build_fixtures.py`가 생성한다. `pass.html`을 고치면 이 스크립트를 다시 돌린다
 - 🚦 커버리지: `design.md`의 🚦 규칙마다 그 규칙으로 실패하는 샘플이 1개 이상 있어야 한다 (현재 15/15)
@@ -30,9 +30,10 @@
 | 정적 실패 | `fail-hex` `fail-rgba` `fail-radius` `fail-font-size` `fail-font-weight` `fail-blur` `fail-spacing` `fail-box-shadow` `fail-frame` `fail-data-token` `fail-token-name` `fail-position` `fail-keyword` `fail-keyword-phrase` `fail-gradient` | 각 1 |
 | 렌더 통과 | `render:pass.html` | 0 |
 | 렌더 실패 (같은 파일 정적 판정은 0) | `fail-render-margin` `fail-render-color` `fail-token-value` `fail-render-overflow` `fail-white-bg` `fail-text-style` `fail-component-rule` `fail-component-missing` `fail-app-background` | 각 1 |
+| 단독 파일 (G3 `self-contained`) | `sc:pass.html` / `sc:fail-self-contained.html` (같은 파일 정적 판정은 0) | 0 / 1 |
 | 디렉터리 | `fail-component` `fail-scope` / `pass-history` / `fail-report-stale` `fail-retries` `fail-order` | 1 / 0 / 각 1 |
 
-- 통과 기준: 68건 모두에서 기대 위반 수 = 실제 위반 수, 위반 규칙 이름도 일치
+- 통과 기준: 71건 모두에서 기대 위반 수 = 실제 위반 수, 위반 규칙 이름도 일치
 - 하나라도 어긋나면 하네스를 사용하지 않는다.
 
 ## 2. 리뷰에서 보강한 규칙

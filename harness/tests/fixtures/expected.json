@@ -29,177 +29,6 @@
     "count": 1,
     "rule": "order"
   },
-  "pass.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:pass.html": {
-    "check": "render",
-    "count": 0
-  },
-  "fail-hex.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "hex"
-  },
-  "fail-rgba.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "rgba"
-  },
-  "fail-radius.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "radius"
-  },
-  "fail-font-size.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "font-size"
-  },
-  "fail-font-weight.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "font-weight"
-  },
-  "fail-blur.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "blur"
-  },
-  "fail-spacing.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "spacing"
-  },
-  "fail-box-shadow.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "box-shadow"
-  },
-  "fail-frame.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "frame"
-  },
-  "fail-data-token.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "data-token"
-  },
-  "fail-token-name.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "token-name"
-  },
-  "fail-position.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "position"
-  },
-  "fail-keyword.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "keyword"
-  },
-  "fail-gradient.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "gradient"
-  },
-  "fail-keyword-phrase.html": {
-    "check": "html",
-    "count": 1,
-    "rule": "keyword"
-  },
-  "fail-render-margin.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-render-margin.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "render-spacing"
-  },
-  "fail-render-color.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-render-color.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "render-color"
-  },
-  "fail-token-value.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-token-value.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "token-value"
-  },
-  "fail-render-overflow.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-render-overflow.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "render-frame"
-  },
-  "fail-white-bg.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-white-bg.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "white-bg"
-  },
-  "fail-text-style.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-text-style.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "text-style"
-  },
-  "fail-component-rule.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-component-rule.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "component-rule"
-  },
-  "fail-component-missing.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-component-missing.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "component-missing"
-  },
-  "fail-app-background.html": {
-    "check": "html",
-    "count": 0
-  },
-  "render:fail-app-background.html": {
-    "check": "render",
-    "count": 1,
-    "rule": "app-background"
-  },
-  "exc:fail-keyword-phrase.html": {
-    "check": "html",
-    "count": 0,
-    "exceptions": [
-      "로그인 없이"
-    ]
-  },
   "guard:designer-screen": {
     "check": "guard",
     "project": "guard-active",
@@ -557,5 +386,189 @@
       }
     },
     "count": 0
+  },
+  "pass.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:pass.html": {
+    "check": "render",
+    "count": 0
+  },
+  "fail-hex.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "hex"
+  },
+  "fail-rgba.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "rgba"
+  },
+  "fail-radius.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "radius"
+  },
+  "fail-font-size.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "font-size"
+  },
+  "fail-font-weight.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "font-weight"
+  },
+  "fail-blur.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "blur"
+  },
+  "fail-spacing.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "spacing"
+  },
+  "fail-box-shadow.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "box-shadow"
+  },
+  "fail-frame.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "frame"
+  },
+  "fail-data-token.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "data-token"
+  },
+  "fail-token-name.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "token-name"
+  },
+  "fail-position.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "position"
+  },
+  "fail-keyword.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "keyword"
+  },
+  "fail-gradient.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "gradient"
+  },
+  "fail-keyword-phrase.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "keyword"
+  },
+  "fail-render-margin.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-render-margin.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "render-spacing"
+  },
+  "fail-render-color.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-render-color.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "render-color"
+  },
+  "fail-token-value.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-token-value.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "token-value"
+  },
+  "fail-render-overflow.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-render-overflow.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "render-frame"
+  },
+  "fail-white-bg.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-white-bg.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "white-bg"
+  },
+  "fail-text-style.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-text-style.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "text-style"
+  },
+  "fail-component-rule.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-component-rule.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "component-rule"
+  },
+  "fail-component-missing.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-component-missing.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "component-missing"
+  },
+  "fail-app-background.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-app-background.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "app-background"
+  },
+  "fail-self-contained.html": {
+    "check": "html",
+    "count": 0
+  },
+  "exc:fail-keyword-phrase.html": {
+    "check": "html",
+    "count": 0,
+    "exceptions": [
+      "로그인 없이"
+    ]
+  },
+  "sc:pass.html": {
+    "check": "self-contained",
+    "count": 0
+  },
+  "sc:fail-self-contained.html": {
+    "check": "self-contained",
+    "count": 1,
+    "rule": "self-contained"
   }
 }

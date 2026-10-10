@@ -39,6 +39,7 @@ tools: Read, Write, Edit, Glob, Grep
 - `03-draft-a.html`, `03-draft-b.html`. 두 시안은 레이아웃·강조 방식이 분명히 달라야 한다.
 - 각 파일 `<head>` 첫 줄에 `<!-- 시안 {a|b}: {다른 시안과의 차이 한 줄} -->`
 - 시안은 `<style>` 안에 자체 스타일을 둔다. `data-token`은 권장(필수 아님).
+- 시안은 **파일 1개로 완결**한다 (본인이 Figma html.to.design으로 가져온다). `components/glowlog.css`를 `<link>`로 불러오지 말고 필요한 클래스는 `<style>`에 복사한다. `@import`, 외부 `src`, `data:`가 아닌 `url(…)`은 G3 `self-contained` 위반이다.
 
 ## S4 — 공용 컴포넌트 + 최종 화면
 1. 선택된 시안을 바탕으로 `screens/screen-{N}.html`을 만든다 (덮어쓰기).

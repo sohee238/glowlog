@@ -71,7 +71,23 @@ def glob_re(pattern):
     return re.escape(pattern).replace(r'\*', r'[^\s\'"]*')
 
 
-def check_bash(cmd, agent, H, active):
+TRUSTED_SCRIPT = r'python3\s+harness/scripts/(?:judge|snapshot|choose|new_run)\.py\b'
+
+
+def protected_hit(cmd, patterns, root):
+    """명령 안에서 프로젝트 기준 경로로 쓰인 보호 패턴을 찾는다.
+    - 단어 시작·`./`·프로젝트 절대경로 뒤에 올 때만 센다 (프로젝트 밖 `/Users/x/.claude/...` 는 제외)
+    - 신뢰 스크립트 호출 경로(`python3 harness/scripts/snapshot.py`)는 지우고 본다 (뒤에 이어진 `rm harness/...` 는 그대로 걸림)"""
+    cmd = re.sub(TRUSTED_SCRIPT, ' ', cmd)
+    start = r'(?:^|[\s\'"=<>|;&(])(?:\./)?'
+    absolute = re.escape(os.path.normpath(root) + os.sep)
+    for p in patterns:
+        if re.search(f'(?:{start}|{absolute}){glob_re(p)}', cmd):
+            return p
+    return None
+
+
+def check_bash(cmd, agent, H, active, root):
     g = H['guard']
     cmd = cmd.strip()
     if agent == 'judge':
@@ -87,9 +103,9 @@ def check_bash(cmd, agent, H, active):
     if re.fullmatch(g['trusted_command'], cmd):
         return                                   # 하네스 스크립트 단독 실행 (choose.py 포함) — 스크립트가 규칙대로 씀
     if re.search(g['bash_write_pattern'], cmd):
-        for p in g['protected'] + g['choose_only']:
-            if re.search(glob_re(p), cmd):
-                deny(f'실행 중 Bash 로 고정 문서·선택 기록을 건드리는 쓰기 명령은 금지 (일치: {p}). 실행 폴더 생성은 new_run.py, 선택 기록은 choose.py 사용')
+        p = protected_hit(cmd, g['protected'] + g['choose_only'], root)
+        if p:
+            deny(f'실행 중 Bash 로 고정 문서·선택 기록을 건드리는 쓰기 명령은 금지 (일치: {p}). 실행 폴더 생성은 new_run.py, 선택 기록은 choose.py 사용')
 
 
 def main():
@@ -106,7 +122,7 @@ def main():
         path = os.path.relpath(full, root)
         check_write(None if path.startswith('..') else path, agent, H, active)
     elif tool == 'Bash':
-        check_bash(inp.get('command', ''), agent, H, active)
+        check_bash(inp.get('command', ''), agent, H, active, root)
     sys.exit(0)
 
 

@@ -570,5 +570,42 @@
     "check": "self-contained",
     "count": 1,
     "rule": "self-contained"
+  },
+  "guard:main-outside-claude": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "echo x >> /Users/someone/.claude/projects/p/memory/MEMORY.md"
+      }
+    },
+    "count": 0
+  },
+  "guard:main-state-with-script": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "sed -i '' s/S3/S4/ runs/20261010-screen2/state.json && python3 harness/scripts/snapshot.py S4 --run runs/20261010-screen2"
+      }
+    },
+    "count": 0
+  },
+  "guard:main-dot-harness": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "sed -i '' s/3/1/ ./harness/rules.json"
+      }
+    },
+    "count": 1,
+    "rule": "guard-deny"
   }
 }

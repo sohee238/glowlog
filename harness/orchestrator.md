@@ -71,4 +71,5 @@
 
 - 실행 중 = `runs/*/state.json` 중 `stage`가 `DONE`이 아닌 것이 있음. 실행이 없을 때는 본인이 하네스를 자유롭게 정비할 수 있다.
 - guard 내부 오류는 차단으로 처리한다 (fail-closed). 단, `python3` 자체가 없으면 훅이 실행되지 못해 통과된다 (Claude Code 2.1.283은 `onFailure: block` 미지원).
+- Bash 보호 경로는 프로젝트 기준 경로로 쓰였을 때만 센다 (단어 시작·`./`·프로젝트 절대경로 뒤). 프로젝트 밖 `~/.claude/...`나 신뢰 스크립트 호출 경로(`python3 harness/scripts/snapshot.py`)는 세지 않는다 (2026-10-10 오탐 2건 수정)
 - Bash 쓰기 판정은 패턴 기반(최선)이며, 빠져나간 경우는 S5 `scope`·`report-stale` 사후 판정이 잡는다.

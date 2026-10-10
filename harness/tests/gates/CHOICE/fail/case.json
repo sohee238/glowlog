@@ -1,0 +1,20 @@
+{
+  "gate": "CHOICE",
+  "run": "runs/20261010-screen2",
+  "setup": [
+    [
+      "choose",
+      "a"
+    ],
+    [
+      "append",
+      "runs/20261010-screen2/03-draft-b.html",
+      "<!-- 재생성 -->"
+    ]
+  ],
+  "expect_exit": 1,
+  "expect_rules": [
+    "choice-stale"
+  ],
+  "설명": "승인 후 시안 b 재생성 (예전 승인)"
+}

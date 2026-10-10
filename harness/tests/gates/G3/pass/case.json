@@ -1,0 +1,8 @@
+{
+  "gate": "G3",
+  "run": "runs/20261010-screen2",
+  "setup": [],
+  "expect_exit": 0,
+  "expect_rules": [],
+  "설명": "시안 a·b 모두 규칙 준수"
+}

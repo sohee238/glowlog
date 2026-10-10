@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>fixture fail-token-value</title>
+<style>
+body { width: 390px; height: 844px; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; background: linear-gradient(160deg, #EEEAF5 0%, #E8E7ED 50%, #E5EEF0 100%); }
+.title { margin: 0; font-size: 26px; font-weight: 800; line-height: 1.3; letter-spacing: -0.5px; color: #2E2B3F; }
+.card { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px; background: rgba(255,255,255,0.72); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.70); border-radius: 20px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); }
+.card-title { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.5; color: #2E2B3F; }
+.caption { margin: 0; font-size: 12px; font-weight: 400; line-height: 1.5; color: #5C5872; }
+.badge { padding: 4px 8px; background: linear-gradient(135deg, #F2C4CE, #E8D5F5, #C5D8F7, #C5EDE0); color: #FFFFFF; border-radius: 6px; font-size: 11px; font-weight: 600; line-height: 1.4; letter-spacing: 0.8px; text-transform: uppercase; }
+.dot { width: 6px; height: 6px; background: #8B7ED8; border-radius: 50%; }
+</style>
+</head>
+<body>
+<h1 class="title" data-token="text/primary fontSize/display">Glowlog</h1>
+<section class="card" data-token="component/card bg/card border/glass radius/lg effect/frosted-glass-card">
+  <h2 class="card-title" data-token="text/primary fontSize/heading2">얼굴 색소 침착 관리</h2>
+  <p class="caption" data-token="text/secondary fontSize/caption">메모: 피드백 없음 · 다음 예정 10월 10일</p>
+  <span class="badge" data-token="component/badge effect/iridescent-gradient radius/sm fontSize/label">오늘 사용</span>
+  <span class="dot" data-token="interactive/accent"></span>
+</section>
+</body>
+</html>

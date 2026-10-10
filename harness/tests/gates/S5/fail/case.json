@@ -1,0 +1,39 @@
+{
+  "gate": "S5",
+  "run": "runs/20261010-screen2",
+  "setup": [
+    [
+      "gate",
+      "G1"
+    ],
+    [
+      "gate",
+      "G2"
+    ],
+    [
+      "gate",
+      "G3"
+    ],
+    [
+      "choose",
+      "a"
+    ],
+    [
+      "gate",
+      "CHOICE"
+    ],
+    [
+      "gate",
+      "G4"
+    ],
+    [
+      "snapshot",
+      "S5"
+    ]
+  ],
+  "expect_exit": 1,
+  "expect_rules": [
+    "keyword"
+  ],
+  "설명": "★ 최종 화면에 \"좋아요\" 버튼"
+}

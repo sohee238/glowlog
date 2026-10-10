@@ -1,0 +1,10 @@
+{
+  "gate": "G2",
+  "run": "runs/20261010-screen2",
+  "setup": [],
+  "expect_exit": 1,
+  "expect_rules": [
+    "spec-count"
+  ],
+  "설명": "체크리스트 4개 (PRD는 5개)"
+}

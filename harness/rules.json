@@ -1,0 +1,111 @@
+{
+  "_설명": "하네스 운영 수치 SSOT. 디자인 값(hex·radius 등)은 design.md `## 판정 규칙 (기계용)`에 있다. 문서와 다르면 이 파일이 우선한다.",
+
+  "stages": {
+    "S1": { "name": "레퍼런스", "agent": "researcher", "gate": "G1" },
+    "S2": { "name": "설계", "agent": "researcher", "gate": "G2" },
+    "S3": { "name": "키스크린", "agent": "designer", "gate": "G3" },
+    "S4": { "name": "컴포넌트·화면", "agent": "designer", "gate": "G4" },
+    "S5": { "name": "판정", "agent": "judge", "gate": "S5" }
+  },
+
+  "scope": {
+    "researcher": ["runs/*/01-*", "runs/*/02-*"],
+    "designer": ["runs/*/03-draft-*", "screens/*", "components/*"],
+    "judge": []
+  },
+  "always_allowed": [
+    "runs/*/state.json",
+    "runs/*/04-components-before.css",
+    "runs/*/03-choice.md",
+    "runs/*/05-report.json",
+    "runs/*/review.md"
+  ],
+  "run_dir": {
+    "name": "runs/{YYYYMMDD}-screen{N}",
+    "on_conflict": "runs/{YYYYMMDD}-screen{N}-{k}  (k = 2, 3, …)",
+    "screen_regex": "screen(\\d+)(?:-\\d+)?$"
+  },
+  "snapshot_skip": {
+    "dirs": [".git", "__pycache__", "node_modules"],
+    "files": [".DS_Store", ".claude/settings.local.json"]
+  },
+
+  "guard": {
+    "_설명": "harness/scripts/guard.py (PreToolUse 훅)가 읽는다. 실행 중(state.json stage != DONE)일 때 적용. 에이전트(researcher·designer·judge)는 항상 적용.",
+    "protected": ["harness/*", "design.md", "PRD.md", "CLAUDE.md", "story-*.md", ".claude/*"],
+    "choose_only": ["runs/*/03-choice.md"],
+    "orchestrator_write": ["runs/*/state.json", "runs/*/04-components-before.css", "runs/*/review.md"],
+    "judge_command": "python3 harness/scripts/judge\\.py (G1|G2|G3|CHOICE|G4|S5) --run runs/[A-Za-z0-9_-]+/?( --adhoc)?",
+    "trusted_command": "python3 harness/scripts/(judge|snapshot|choose|new_run)\\.py( [^;&|<>`$()\\n]*)?",
+    "bash_write_pattern": ">|\\btee\\b|\\bsed\\s+-i|\\bmv\\b|\\bcp\\b|\\brm\\b|\\btouch\\b|\\bln\\b|\\bchmod\\b|open\\(|write_text|\\bdd\\b"
+  },
+
+  "G1": {
+    "file": "01-refs.md",
+    "min_refs": 3,
+    "url_field": "ui_url:",
+    "url_domain": "uibowl",
+    "point_field": "반영 포인트:"
+  },
+  "G2": {
+    "file": "02-spec.md",
+    "prd": "PRD.md"
+  },
+  "G3": {
+    "drafts": ["03-draft-a.html", "03-draft-b.html"]
+  },
+  "choice": {
+    "file": "03-choice.md",
+    "allowed": ["a", "b"],
+    "reason_field": "이유:",
+    "hash_field": "drafts:",
+    "hash_len": 12
+  },
+  "G4": {
+    "snapshot": "04-components-before.css",
+    "components": "components/glowlog.css"
+  },
+  "S5": {
+    "screen": "screens/screen-{N}.html"
+  },
+
+  "render": {
+    "chrome_env": "GLOWLOG_CHROME",
+    "chrome_candidates": [
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "/Applications/Chromium.app/Contents/MacOS/Chromium",
+      "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "/usr/bin/google-chrome",
+      "/usr/bin/chromium",
+      "/usr/bin/chromium-browser",
+      "C:/Program Files/Google/Chrome/Application/chrome.exe"
+    ],
+    "timeout_sec": 30
+  },
+  "gate_order": ["G1", "G2", "G3", "CHOICE", "G4", "S5"],
+  "report": "05-report.json",
+
+  "retries": {
+    "G1": { "back_to": "S1", "max": 2 },
+    "G2": { "back_to": "S2", "max": 2 },
+    "G3": { "back_to": "S3", "max": 2 },
+    "reject": { "back_to": "S2", "max": 1 },
+    "G4_S5": { "back_to": "S4", "max": 3 }
+  },
+
+  "keywords": {
+    "forbidden": [
+      "공유", "팔로우", "팔로워", "댓글", "좋아요", "커뮤니티", "피드",
+      "share", "follow", "like", "comment",
+      "AI 분석", "피부 분석", "진단", "피부 점수", "피부 나이", "analyze", "diagnosis",
+      "구매", "장바구니", "결제", "최저가", "cart", "buy",
+      "로그인", "회원가입", "알림 설정", "푸시", "login", "sign up"
+    ],
+    "exceptions": ["피드백"],
+    "exceptions_rule": "오탐 허용은 구절 단위로만 추가한다 (예: \"로그인 없이\", \"진단서\"). 키워드 단어 자체는 넣지 않는다. 본인만 추가 — 실행 중 harness/ 수정 금지. 부정문 자동 허용은 하지 않는다 (\"공유하기 (아직 지원하지 않음)\" 같은 UI가 통과하기 때문).",
+    "skip_line_prefix": "제외:",
+    "scan_docs": ["01-refs.md", "02-spec.md"]
+  }
+}

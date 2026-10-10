@@ -1,0 +1,10 @@
+{
+  "gate": "G1",
+  "run": "runs/20261010-screen2",
+  "setup": [],
+  "expect_exit": 1,
+  "expect_rules": [
+    "keyword"
+  ],
+  "설명": "★ 반영 포인트에 \"공유\""
+}

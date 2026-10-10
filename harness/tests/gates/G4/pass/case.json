@@ -1,0 +1,8 @@
+{
+  "gate": "G4",
+  "run": "runs/20261010-screen2",
+  "setup": [],
+  "expect_exit": 0,
+  "expect_rules": [],
+  "설명": "기존 클래스 유지 + 새 클래스 추가"
+}

@@ -1,0 +1,561 @@
+{
+  "_설명": "각 샘플의 기대 위반 수와 위반 규칙. tests/run_fixtures.py가 읽는다.",
+  "fail-component": {
+    "check": "component",
+    "count": 1,
+    "rule": "component"
+  },
+  "fail-scope": {
+    "check": "scope",
+    "count": 1,
+    "rule": "scope"
+  },
+  "pass-history": {
+    "check": "history",
+    "count": 0
+  },
+  "fail-report-stale": {
+    "check": "history",
+    "count": 1,
+    "rule": "report-stale"
+  },
+  "fail-retries": {
+    "check": "history",
+    "count": 1,
+    "rule": "retries"
+  },
+  "fail-order": {
+    "check": "history",
+    "count": 1,
+    "rule": "order"
+  },
+  "pass.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:pass.html": {
+    "check": "render",
+    "count": 0
+  },
+  "fail-hex.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "hex"
+  },
+  "fail-rgba.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "rgba"
+  },
+  "fail-radius.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "radius"
+  },
+  "fail-font-size.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "font-size"
+  },
+  "fail-font-weight.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "font-weight"
+  },
+  "fail-blur.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "blur"
+  },
+  "fail-spacing.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "spacing"
+  },
+  "fail-box-shadow.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "box-shadow"
+  },
+  "fail-frame.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "frame"
+  },
+  "fail-data-token.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "data-token"
+  },
+  "fail-token-name.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "token-name"
+  },
+  "fail-position.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "position"
+  },
+  "fail-keyword.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "keyword"
+  },
+  "fail-gradient.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "gradient"
+  },
+  "fail-keyword-phrase.html": {
+    "check": "html",
+    "count": 1,
+    "rule": "keyword"
+  },
+  "fail-render-margin.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-render-margin.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "render-spacing"
+  },
+  "fail-render-color.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-render-color.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "render-color"
+  },
+  "fail-token-value.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-token-value.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "token-value"
+  },
+  "fail-render-overflow.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-render-overflow.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "render-frame"
+  },
+  "fail-white-bg.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-white-bg.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "white-bg"
+  },
+  "fail-text-style.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-text-style.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "text-style"
+  },
+  "fail-component-rule.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-component-rule.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "component-rule"
+  },
+  "fail-component-missing.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-component-missing.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "component-missing"
+  },
+  "fail-app-background.html": {
+    "check": "html",
+    "count": 0
+  },
+  "render:fail-app-background.html": {
+    "check": "render",
+    "count": 1,
+    "rule": "app-background"
+  },
+  "exc:fail-keyword-phrase.html": {
+    "check": "html",
+    "count": 0,
+    "exceptions": [
+      "로그인 없이"
+    ]
+  },
+  "guard:designer-screen": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "screens/screen-2.html"
+      },
+      "agent_type": "designer",
+      "agent_id": "a1"
+    },
+    "count": 0
+  },
+  "guard:designer-draft": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Edit",
+      "tool_input": {
+        "file_path": "runs/20261010-screen2/03-draft-a.html"
+      },
+      "agent_type": "designer",
+      "agent_id": "a1"
+    },
+    "count": 0
+  },
+  "guard:designer-prd": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "PRD.md"
+      },
+      "agent_type": "designer",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:designer-rules": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Edit",
+      "tool_input": {
+        "file_path": "harness/rules.json"
+      },
+      "agent_type": "designer",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:designer-design-idle": {
+    "check": "guard",
+    "project": "guard-idle",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Edit",
+      "tool_input": {
+        "file_path": "design.md"
+      },
+      "agent_type": "designer",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:designer-outside": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "/tmp/x.html"
+      },
+      "agent_type": "designer",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:designer-bash": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "ls"
+      },
+      "agent_type": "designer",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:researcher-refs": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "runs/20261010-screen2/01-refs.md"
+      },
+      "agent_type": "researcher",
+      "agent_id": "a1"
+    },
+    "count": 0
+  },
+  "guard:researcher-screen": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "screens/screen-2.html"
+      },
+      "agent_type": "researcher",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:judge-ok": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "python3 harness/scripts/judge.py G3 --run runs/20261010-screen2"
+      },
+      "agent_type": "judge",
+      "agent_id": "a1"
+    },
+    "count": 0
+  },
+  "guard:judge-adhoc": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "python3 harness/scripts/judge.py S5 --run runs/20261010-screen2 --adhoc"
+      },
+      "agent_type": "judge",
+      "agent_id": "a1"
+    },
+    "count": 0
+  },
+  "guard:judge-chain": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "python3 harness/scripts/judge.py G3 --run runs/20261010-screen2; rm -rf screens"
+      },
+      "agent_type": "judge",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:judge-root": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "python3 harness/scripts/judge.py G3 --run runs/20261010-screen2 --root /tmp"
+      },
+      "agent_type": "judge",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:judge-cat": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "cat PRD.md"
+      },
+      "agent_type": "judge",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:judge-write": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "runs/20261010-screen2/05-report.json"
+      },
+      "agent_type": "judge",
+      "agent_id": "a1"
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:main-state": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "runs/20261010-screen2/state.json"
+      }
+    },
+    "count": 0
+  },
+  "guard:main-choice-write": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "runs/20261010-screen2/03-choice.md"
+      }
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:main-screen": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Write",
+      "tool_input": {
+        "file_path": "screens/screen-2.html"
+      }
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:main-harness": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Edit",
+      "tool_input": {
+        "file_path": "harness/gates.md"
+      }
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:main-choice-bash": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "echo a > runs/20261010-screen2/03-choice.md"
+      }
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:main-sed-rules": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "sed -i '' s/3/1/ harness/rules.json"
+      }
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:main-choose": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "python3 harness/scripts/choose.py a --run runs/20261010-screen2 --reason \"카드형\""
+      }
+    },
+    "count": 0
+  },
+  "guard:main-new-run": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "python3 harness/scripts/new_run.py --screen 2 --keywords \"달력,루틴 카드\""
+      }
+    },
+    "count": 0
+  },
+  "guard:main-copy-snapshot": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "cp components/glowlog.css runs/20261010-screen2/04-components-before.css"
+      }
+    },
+    "count": 0
+  },
+  "guard:main-trusted-chain": {
+    "check": "guard",
+    "project": "guard-active",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {
+        "command": "python3 harness/scripts/snapshot.py S4 --run runs/20261010-screen2 && rm harness/rules.json"
+      }
+    },
+    "count": 1,
+    "rule": "guard-deny"
+  },
+  "guard:main-harness-idle": {
+    "check": "guard",
+    "project": "guard-idle",
+    "input": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Edit",
+      "tool_input": {
+        "file_path": "harness/gates.md"
+      }
+    },
+    "count": 0
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "gate": "G2",
+  "run": "runs/20261010-screen2",
+  "setup": [],
+  "expect_exit": 0,
+  "expect_rules": [],
+  "설명": "체크리스트 5개 = PRD 화면 2 요구사항 5개"
+}

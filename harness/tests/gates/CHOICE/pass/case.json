@@ -1,0 +1,13 @@
+{
+  "gate": "CHOICE",
+  "run": "runs/20261010-screen2",
+  "setup": [
+    [
+      "choose",
+      "a"
+    ]
+  ],
+  "expect_exit": 0,
+  "expect_rules": [],
+  "설명": "choose.py로 a 선택"
+}

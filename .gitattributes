@@ -1,0 +1,5 @@
+# 판정이 파일 해시(시안 승인·리포트 지문)를 쓰므로 줄바꿈 변환 금지 — 동료 환경(Windows 등)에서도 같은 바이트
+harness/tests/fixtures/** -text
+runs/** -text
+screens/** -text
+components/** -text

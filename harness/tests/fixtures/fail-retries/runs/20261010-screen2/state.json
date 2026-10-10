@@ -1,0 +1,32 @@
+{
+  "stage": "S1",
+  "screen": 0,
+  "keywords": [],
+  "retries": {
+    "G1": 1,
+    "G2": 0,
+    "G3": 0,
+    "reject": 0,
+    "G4_S5": 0
+  },
+  "snapshots": {
+    "S5": {
+      "PRD.md": "2026-10-10T14:48:38.715171",
+      "design.md": "2026-10-10T14:48:38.715620",
+      "screens/screen-2.html": "2026-10-10T14:48:44.721723",
+      "harness/rules.json": "2026-10-10T14:48:38.720293",
+      "harness/scripts/choose.py": "2026-10-10T14:48:38.720810",
+      "harness/scripts/judge.py": "2026-10-10T14:48:38.721096",
+      "harness/scripts/snapshot.py": "2026-10-10T14:48:38.721519",
+      "components/glowlog.css": "2026-10-10T14:48:44.668968",
+      "runs/20261010-screen2/state.json": "2026-10-10T14:48:38.726710",
+      "runs/20261010-screen2/01-refs.md": "2026-10-10T14:48:38.729225",
+      "runs/20261010-screen2/03-choice.md": "2026-10-10T14:48:44.611345",
+      "runs/20261010-screen2/05-report.json": "2026-10-10T14:48:44.714182",
+      "runs/20261010-screen2/04-components-before.css": "2026-10-10T14:48:44.666078",
+      "runs/20261010-screen2/03-draft-a.html": "2026-10-10T14:48:38.731738",
+      "runs/20261010-screen2/03-draft-b.html": "2026-10-10T14:48:38.734338",
+      "runs/20261010-screen2/02-spec.md": "2026-10-10T14:48:38.729612"
+    }
+  }
+}

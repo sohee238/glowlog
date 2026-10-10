@@ -1,0 +1,37 @@
+{
+  "gate": "S5",
+  "run": "runs/20261010-screen2",
+  "setup": [
+    [
+      "gate",
+      "G1"
+    ],
+    [
+      "gate",
+      "G2"
+    ],
+    [
+      "gate",
+      "G3"
+    ],
+    [
+      "choose",
+      "a"
+    ],
+    [
+      "gate",
+      "CHOICE"
+    ],
+    [
+      "gate",
+      "G4"
+    ],
+    [
+      "snapshot",
+      "S5"
+    ]
+  ],
+  "expect_exit": 0,
+  "expect_rules": [],
+  "설명": "G1~G4 실제 통과 이력 + 정상 최종 화면"
+}

@@ -1,0 +1,10 @@
+{
+  "gate": "G4",
+  "run": "runs/20261010-screen2",
+  "setup": [],
+  "expect_exit": 1,
+  "expect_rules": [
+    "component"
+  ],
+  "설명": "기존 클래스 .card 삭제"
+}

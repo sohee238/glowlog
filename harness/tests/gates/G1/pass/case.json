@@ -1,0 +1,8 @@
+{
+  "gate": "G1",
+  "run": "runs/20261010-screen2",
+  "setup": [],
+  "expect_exit": 0,
+  "expect_rules": [],
+  "설명": "레퍼런스 3개, 금지 기능은 제외: 줄에만"
+}

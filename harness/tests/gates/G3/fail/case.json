@@ -1,0 +1,10 @@
+{
+  "gate": "G3",
+  "run": "runs/20261010-screen2",
+  "setup": [],
+  "expect_exit": 1,
+  "expect_rules": [
+    "keyword"
+  ],
+  "설명": "★ 시안 b에 \"AI 피부 분석\" 버튼"
+}

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- 시안 a: 월 달력을 화면 맨 위 주인공으로 두고, 선택 날짜 요약(2열 카테고리 카드)과 한 줄 요약형 루틴 카드 목록을 아래로 잇는 '날짜 먼저' 구성 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=390">
+<title>Glowlog 루틴 시안 A</title>
+<style>
+  * { box-sizing: border-box; }
+  body { width: 390px; height: 844px; margin: 0; padding: 0; }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(160deg, #EEEAF5 0%, #E8E7ED 50%, #E5EEF0 100%);
+    color: #2E2B3F;
+    font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  /* Text Styles */
+  .t-h1 { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.4; letter-spacing: -0.3px; }
+  .t-h2 { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.5; letter-spacing: 0; }
+  .t-body { margin: 0; font-size: 14px; font-weight: 400; line-height: 1.6; letter-spacing: 0; }
+  .t-strong { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.6; letter-spacing: 0; }
+  .t-caption { margin: 0; font-size: 12px; font-weight: 400; line-height: 1.5; letter-spacing: 0; }
+  .t-label { margin: 0; font-size: 11px; font-weight: 600; line-height: 1.4; letter-spacing: 0.8px; }
+
+  /* Colors */
+  .c-primary { color: #2E2B3F; }
+  .c-secondary { color: #5C5872; }
+  .c-muted { color: #9491A7; }
+  .c-accent { color: #8B7ED8; }
+  .c-white { color: #FFFFFF; }
+
+  /* Header */
+  .top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 16px 20px 12px;
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 20px;
+  }
+
+  /* Card */
+  .card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.70);
+    border-radius: 20px;
+    padding: 16px 20px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+  }
+  .badge-off { background: rgba(255, 255, 255, 0.45); color: #5C5872; }
+  .badge-on { background: linear-gradient(135deg, #F2C4CE, #E8D5F5, #C5D8F7, #C5EDE0); color: #FFFFFF; }
+  .badge-today { background: #E07399; color: #FFFFFF; }
+
+  /* Calendar */
+  .cal { display: flex; flex-direction: column; gap: 12px; }
+  .cal-head { display: flex; align-items: center; justify-content: space-between; }
+  .arrow {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 4px;
+  }
+  .wd { text-align: center; }
+  .day {
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .num {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .num-today { background: #EDE9F9; }
+  .num-sel { background: #C9BFF0; }
+  .dot { width: 4px; height: 4px; border-radius: 50%; }
+  .dot-on { background: #E07399; }
+
+  /* Section */
+  .sec { display: flex; flex-direction: column; gap: 8px; }
+  .sec-head { display: flex; align-items: center; justify-content: space-between; }
+
+  /* Summary */
+  .sum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sum { display: flex; flex-direction: column; gap: 4px; }
+  .one-line { white-space: nowrap; }
+
+  /* Routine */
+  .routines { display: flex; flex-direction: column; gap: 8px; }
+  .routine { display: flex; flex-direction: column; gap: 4px; }
+  .r-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .r-left { display: flex; align-items: center; gap: 8px; }
+  .link { text-decoration: none; white-space: nowrap; }
+
+  /* Bottom nav */
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 20px 12px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.70);
+  }
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #9491A7;
+    text-decoration: none;
+  }
+  .ico { width: 20px; height: 20px; border: 2px solid #9491A7; }
+  .ico-circle { border-radius: 50%; }
+  .ico-square { border-radius: 6px; }
+  .ico-on {
+    border-color: #C9BFF0;
+    background: linear-gradient(135deg, #F2C4CE, #E8D5F5, #C5D8F7, #C5EDE0);
+  }
+  .ico-pair { display: flex; gap: 4px; }
+  .ico-half { width: 8px; height: 20px; border: 2px solid #9491A7; border-radius: 6px; }
+</style>
+</head>
+<body class="app">
+
+  <header class="top">
+    <h1 class="t-h1 c-primary">루틴</h1>
+    <p class="t-caption c-secondary">10월 10일 토요일</p>
+  </header>
+
+  <main class="main">
+
+    <!-- 월 달력 -->
+    <section class="card cal" data-token="component/card">
+      <div class="cal-head">
+        <span class="arrow t-strong c-secondary">‹</span>
+        <h2 class="t-h2 c-primary">2026년 10월</h2>
+        <span class="arrow t-strong c-secondary">›</span>
+      </div>
+      <div class="cal-grid">
+        <span class="wd t-label c-muted">일</span>
+        <span class="wd t-label c-muted">월</span>
+        <span class="wd t-label c-muted">화</span>
+        <span class="wd t-label c-muted">수</span>
+        <span class="wd t-label c-muted">목</span>
+        <span class="wd t-label c-muted">금</span>
+        <span class="wd t-label c-muted">토</span>
+
+        <div class="day"><span class="num t-body c-muted">27</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-muted">28</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-muted">29</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-muted">30</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">1</span><span class="dot dot-on"></span></div>
+        <div class="day"><span class="num t-body c-primary">2</span><span class="dot dot-on"></span></div>
+        <div class="day"><span class="num t-body c-primary">3</span><span class="dot"></span></div>
+
+        <div class="day"><span class="num t-body c-primary">4</span><span class="dot dot-on"></span></div>
+        <div class="day"><span class="num t-body c-primary">5</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">6</span><span class="dot dot-on"></span></div>
+        <div class="day"><span class="num t-body c-primary">7</span><span class="dot"></span></div>
+        <div class="day"><span class="num num-sel t-strong c-primary">8</span><span class="dot dot-on"></span></div>
+        <div class="day"><span class="num t-body c-primary">9</span><span class="dot"></span></div>
+        <div class="day"><span class="num num-today t-strong c-accent">10</span><span class="dot dot-on"></span></div>
+
+        <div class="day"><span class="num t-body c-primary">11</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">12</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">13</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">14</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">15</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">16</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">17</span><span class="dot"></span></div>
+
+        <div class="day"><span class="num t-body c-primary">18</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">19</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">20</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">21</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">22</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">23</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">24</span><span class="dot"></span></div>
+
+        <div class="day"><span class="num t-body c-primary">25</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">26</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">27</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">28</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">29</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">30</span><span class="dot"></span></div>
+        <div class="day"><span class="num t-body c-primary">31</span><span class="dot"></span></div>
+      </div>
+    </section>
+
+    <!-- 선택한 날짜 기록 요약 -->
+    <section class="sec">
+      <div class="sec-head">
+        <h2 class="t-label c-secondary">10월 8일 목요일 기록</h2>
+        <span class="t-label c-muted">2건</span>
+      </div>
+      <div class="sum-grid">
+        <article class="card sum" data-token="component/card">
+          <span class="t-label c-accent one-line">화장품</span>
+          <h3 class="t-strong c-primary one-line">비타민C 세럼</h3>
+          <p class="t-caption c-secondary one-line">양 볼 · 아침</p>
+        </article>
+        <article class="card sum" data-token="component/card">
+          <span class="t-label c-accent one-line">뷰티 디바이스</span>
+          <h3 class="t-strong c-primary one-line">LED 마스크</h3>
+          <p class="t-caption c-secondary one-line">이마·턱 · 10분</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 진행 중인 루틴 -->
+    <section class="sec">
+      <div class="sec-head">
+        <h2 class="t-label c-secondary">진행 중인 루틴</h2>
+        <span class="t-label c-muted">3개</span>
+      </div>
+      <div class="routines">
+        <article class="card routine" data-token="component/card">
+          <div class="r-row">
+            <div class="r-left">
+              <h3 class="t-h2 c-primary one-line">얼굴 색소 침착 관리</h3>
+              <span class="badge badge-off" data-token="component/badge">격일</span>
+            </div>
+          </div>
+          <div class="r-row">
+            <div class="r-left">
+              <span class="t-caption c-secondary one-line">최근 10.08</span>
+              <span class="t-strong c-accent one-line">다음 예정 10.10</span>
+              <span class="badge badge-today" data-token="component/badge">오늘</span>
+            </div>
+            <a class="link t-caption c-accent">비교 보기</a>
+          </div>
+        </article>
+
+        <article class="card routine" data-token="component/card">
+          <div class="r-row">
+            <div class="r-left">
+              <h3 class="t-h2 c-primary one-line">좁쌀 여드름 진정</h3>
+              <span class="badge badge-off" data-token="component/badge">주 2회</span>
+            </div>
+          </div>
+          <div class="r-row">
+            <div class="r-left">
+              <span class="t-caption c-secondary one-line">최근 10.08</span>
+              <span class="t-strong c-accent one-line">다음 예정 10.12</span>
+              <span class="badge badge-on" data-token="component/badge">D-2</span>
+            </div>
+            <a class="link t-caption c-accent">비교 보기</a>
+          </div>
+        </article>
+
+        <article class="card routine" data-token="component/card">
+          <div class="r-row">
+            <div class="r-left">
+              <h3 class="t-h2 c-primary one-line">괄사 마사지</h3>
+              <span class="badge badge-off" data-token="component/badge">자유</span>
+            </div>
+          </div>
+          <div class="r-row">
+            <div class="r-left">
+              <span class="t-caption c-secondary one-line">최근 기록 10.06</span>
+            </div>
+            <a class="link t-caption c-accent">비교 보기</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="nav" data-token="component/bottom-nav">
+    <a class="nav-item">
+      <span class="ico ico-circle"></span>
+      <span class="t-label c-muted">기록</span>
+    </a>
+    <a class="nav-item">
+      <span class="ico ico-square ico-on"></span>
+      <span class="t-label c-accent">루틴</span>
+    </a>
+    <a class="nav-item">
+      <span class="ico-pair"><span class="ico-half"></span><span class="ico-half"></span></span>
+      <span class="t-label c-muted">비교</span>
+    </a>
+  </nav>
+
+</body>
+</html>
